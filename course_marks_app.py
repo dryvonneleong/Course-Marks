@@ -1,4 +1,3 @@
-
 import streamlit as st
 import pandas as pd
 
@@ -25,6 +24,13 @@ try:
             st.success("Record found!")
             st.write(f"**Assignment Mark:** {student.iloc[0]['Assignment mark']}")
             st.write(f"**Mid Term Mark:** {student.iloc[0]['mid term mark']}")
+            
+            # Display link if available
+            link = student.iloc[0].get('link', '')
+            if pd.notna(link) and link.strip():
+                st.markdown(f"**Related Link:** Click here", unsafe_allow_html=True)
+            else:
+                st.info("No link available for this student.")
         else:
             st.error("Student ID or Email not found. Please check your input.")
 except Exception as e:
