@@ -22,7 +22,11 @@ try:
             (df['email id'].str.strip().str.lower() == email.strip().lower())
         ]
         if not student.empty:
-            st.success("Record found!")
+                        
+            # Show student name at the top
+            student_name = student.iloc[0].get('student name', 'Name not found')
+            st.markdown(f"### {student_name}")
+
             st.write(f"**Assignment Mark:** {student.iloc[0]['Assignment mark']}")
             st.write(f"**Mid Term Mark:** {student.iloc[0]['mid term mark']}")
             
@@ -36,6 +40,7 @@ try:
             st.error("Student ID or Email not found. Please check your input.")
 except Exception as e:
     st.error(f"Failed to load data from Google Sheets: {e}")
+
 
 
 
