@@ -29,12 +29,13 @@ try:
             # Display link if available
             link = student.iloc[0].get('link', '')
             if pd.notna(link) and link.strip():
-                st.markdown(f"**Related Link:** [Click here]({link})", unsafe_allow_html=True)
+                st.markdown(f"**Link to assignment:** [Click here]({link})", unsafe_allow_html=True)
             else:
                 st.info("No link available for this student.")
         else:
             st.error("Student ID or Email not found. Please check your input.")
 except Exception as e:
     st.error(f"Failed to load data from Google Sheets: {e}")
+
 
 
