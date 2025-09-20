@@ -11,6 +11,11 @@ try:
     df = pd.read_csv(sheet_url)
     st.success("Student marks loaded from Google Sheets!")
 
+
+# 🔍 Debug: Show column names
+    st.write("Columns in sheet:", df.columns.tolist())
+
+    
     st.write("### Student Login")
     student_id = st.text_input("Enter your Student ID")
     email = st.text_input("Enter your Email ID")
@@ -35,3 +40,4 @@ try:
             st.error("Student ID or Email not found. Please check your input.")
 except Exception as e:
     st.error(f"Failed to load data from Google Sheets: {e}")
+
